@@ -26,7 +26,7 @@ An easy-to-use Qt-based graphical user interface and supporting tools for 3D con
 
 ## Key Features
 
-1. **🎨 Image-to-3D Pipeline**: Generate high-quality 3D models from 2D images using state-of-the-art AI models (Hunyuan3D) with automatic background removal and optimization.
+1. **🎨 Image-to-3D Pipeline**: Generate 3D models from 2D images using open-source image-to-3D generation models such as Hunyuan3D, with automatic background removal and optimization.
 
 2. **🚀 One-Click Launch**: Batch scripts automatically start both ComfyUI backend and Draft3D GUI frontend together, eliminating manual configuration.
 
@@ -838,9 +838,9 @@ Draft3D-GUI/
 
 ---
 
-## Compliance with SoftwareX Guidelines 📚
+## Research-Software Packaging and Documentation 📚
 
-To meet the SoftwareX journal requirements for research software, this repository has been designed with the following aspects in mind:
+This repository is being organized to support documentation, reproducibility, and open-source distribution in line with common research-software publication practices.
 
 - **Clear module and directory separation**:
   - Core reusable logic (`draft3d`) is separated from GUI-related code (`draft3d_gui`) into two distinct packages.
@@ -856,7 +856,7 @@ To meet the SoftwareX journal requirements for research software, this repositor
 
 - **Licensing and documentation**:
   - Provides a top-level `README.md` and `LICENSE.txt`.
-  - Uses the OSI-approved MIT License, which is compatible with SoftwareX’s open-source requirements.
+  - Uses the OSI-approved MIT License, a widely used open-source license for research software.
 
 This README will be updated alongside ongoing refactoring and article preparation, including detailed instructions for reproducing experiments and versioned release notes where appropriate.
 
@@ -923,28 +923,11 @@ If you use Draft3D GUI in academic work, please cite the software repository (or
 - Jiatian Song; Jianmin Zhang*  
   Guizhou University, Guiyang, China
 
-### Manuscript status
+### Optional: manuscript and archival citation (add later)
 
-A journal manuscript describing Draft3D is currently in preparation. Full article citation details (journal/volume/pages/DOI) will be added after peer review and publication.
+When the paper is publicly available (or accepted), you may add the formal article citation here.
 
-### Software Citation (Zenodo)
-
-If your work depends on a specific release, please cite the archived version:
-
-**BibTeX:**
-```bibtex
-@software{Draft3D_GUI_Zenodo,
-  author    = {[Your Name]},
-  title     = {{Draft3D GUI}: {A} Qt-based graphical user interface for 3D content generation workflows},
-  year      = {2026},
-  publisher = {Zenodo},
-  url       = {https://github.com/tian-works/Draft3D},
-  doi       = {[Zenodo DOI]},
-  version   = {v0.1.0},
-}
-```
-
-> ⚠️ **Note**: Replace placeholders with actual information once the paper is published and Zenodo archive is created.
+If you create a Zenodo archive for a specific software release, add the Zenodo DOI-based citation here as well.
 
 ---
 
