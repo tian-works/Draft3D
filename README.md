@@ -913,7 +913,7 @@ If you use Draft3D GUI in academic work, please cite the software repository (or
   author = {Song, Jiatian and Zhang, Jianmin},
   title  = {{Draft3D GUI}: A Qt-based graphical user interface for sketch-conditioned multi-stage 2D-to-3D concept generation},
   year   = {2026},
-  url    = {https://github.com/[your-username]/Draft3D-GUI},
+  url    = {https://github.com/tian-works/Draft3D},
   note   = {Research software repository}
 }
 ```
@@ -938,7 +938,7 @@ If your work depends on a specific release, please cite the archived version:
   title     = {{Draft3D GUI}: {A} Qt-based graphical user interface for 3D content generation workflows},
   year      = {2026},
   publisher = {Zenodo},
-  url       = {https://github.com/[your-username]/Draft3D-GUI},
+  url       = {https://github.com/tian-works/Draft3D},
   doi       = {[Zenodo DOI]},
   version   = {v0.1.0},
 }
