@@ -898,8 +898,8 @@ If you use Draft3D GUI in your academic work, please cite our SoftwareX article:
 **BibTeX:**
 ```bibtex
 @article{Draft3D_SoftwareX_2026,
-  author  = {[Your Name] and [Co-authors]},
-  title   = {{Draft3D GUI}: {A} Qt-based graphical user interface for 3D content generation workflows},
+  author  = {Song, Jiatian and Zhang, Jianmin},
+  title   = {{Draft3D}: An open-source local software platform for sketch-conditioned multi-stage 2D-to-3D concept generation},
   journal = {SoftwareX},
   year    = {2026},
   volume  = {[Volume]},
@@ -910,8 +910,13 @@ If you use Draft3D GUI in your academic work, please cite our SoftwareX article:
 
 **APA Style:**
 ```
-[Your Name], [Co-authors]. (2026). Draft3D GUI: A Qt-based graphical user interface for 3D content generation workflows. SoftwareX, [Volume], [Pages]. https://doi.org/[DOI]
+Song, J., & Zhang, J.* (2026). Draft3D: An open-source local software platform for sketch-conditioned multi-stage 2D-to-3D concept generation. SoftwareX, [Volume], [Pages]. https://doi.org/[DOI]
 ```
+
+**Affiliation:**
+
+- Jiatian Song; Jianmin Zhang*  
+  Guizhou University, Guiyang, China
 
 ### Software Citation (Zenodo)
 
