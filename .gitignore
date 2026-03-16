@@ -28,6 +28,7 @@ env/
 
 # IDE
 .vscode/
+.idea/
 *.swp
 *.swo
 *~
@@ -38,6 +39,9 @@ generated_images/
 *.log
 temp_sketch.png
 gui_config.json
+
+# Local assistant / IDE metadata
+.claude/
 
 # ComfyUI (if included as submodule, these should be ignored)
 ComfyUI/output/

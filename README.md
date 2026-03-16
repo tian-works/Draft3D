@@ -1,7 +1,7 @@
 # Draft3D GUI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Status](https://img.shields.io/badge/status-research--software-blue.svg)](#)
 [![Manuscript](https://img.shields.io/badge/manuscript-in_preparation-orange.svg)](#)
 
@@ -49,7 +49,7 @@ An easy-to-use Qt-based graphical user interface and supporting tools for 3D con
 ### Prerequisites
 
 - **Operating System**: Windows 10 or later (Linux/macOS supported with script adaptations)
-- **Python**: 3.9 or higher (3.10+ recommended)
+- **Python**: 3.10 or higher
 - **ComfyUI**: Standard installation required in `ComfyUI/` folder
 - **Hardware**: NVIDIA GPU recommended (CPU-only operation possible but slower)
 
@@ -157,7 +157,7 @@ To run Draft3D GUI, you'll need the following components:
 - If you're on Linux or macOS, you can still use the project, but you'll need to adapt the launch scripts or run the Python commands directly
 
 #### **🐍 Python Environment**
-- **Python 3.9 or higher** (Python 3.10 or 3.11 recommended for best compatibility)
+- **Python 3.10 or higher** (Python 3.10 or 3.11 recommended for best compatibility)
   - You can check your Python version by running `python --version` in a terminal
   - If you don't have Python installed, download it from [python.org](https://www.python.org/downloads/)
   - **⚠️ Important**: During installation, make sure to check "Add Python to PATH" to enable command-line access
@@ -166,10 +166,11 @@ To run Draft3D GUI, you'll need the following components:
 The following packages are required and will be automatically installed when you follow the setup instructions:
 
 - **Core dependencies** (from `requirements.txt`):
-  - `numpy` (≥1.21) - Numerical computing and array operations
+  - `numpy` (≥1.24) - Numerical computing and array operations
   - `requests` (≥2.28) - HTTP communication with ComfyUI backend
   - `PySide6` (≥6.5) - Qt-based GUI framework (primary)
   - `PyQt5` (≥5.15) - Optional fallback Qt binding
+  - `opencv-python` (≥4.8) - OpenCV utilities for image processing
   - `pyvista` (≥0.43) - 3D mesh visualization and manipulation
   - `pyvistaqt` (≥0.11) - PyVista integration with Qt
   - `vtk` (≥9.2) - Visualization Toolkit for 3D graphics
@@ -203,7 +204,7 @@ Before proceeding with installation, let's verify that your system meets the req
    python3 --version
    ```
    
-   You should see output like `Python 3.9.x`, `Python 3.10.x`, or `Python 3.11.x`. If you see an error or a version below 3.9, you'll need to install or update Python. ❌
+   You should see output like `Python 3.10.x` or `Python 3.11.x`. If you see an error or a version below 3.10, you'll need to install or update Python. ❌
 
 3. **Check pip (Python package manager)**:
    ```bat
@@ -214,7 +215,7 @@ Before proceeding with installation, let's verify that your system meets the req
    python -m pip --version
    ```
    
-   Pip should be automatically included with Python 3.9+. If you see an error, you may need to reinstall Python with the "pip" option enabled.
+   Pip should be automatically included with Python 3.10+. If you see an error, you may need to reinstall Python with the "pip" option enabled.
 
 #### **💿 Check Available Disk Space**
 
@@ -256,7 +257,7 @@ If ComfyUI is not yet installed, don't worry—we'll guide you through setting i
 
 Before moving to installation, confirm:
 
-- [ ] Python 3.9+ is installed and accessible from command line
+- [ ] Python 3.10+ is installed and accessible from command line
 - [ ] pip is available and working
 - [ ] Sufficient disk space (10+ GB recommended)
 - [ ] (Optional) NVIDIA GPU with drivers installed
@@ -294,7 +295,7 @@ First, let's make sure Python is available:
    ```bat
    python --version
    ```
-   You should see Python 3.9 or higher. If not, please install Python first.
+   You should see Python 3.10 or higher. If not, please install Python first.
 
 #### **Step 2: One-Click Launch (Easiest Method) 🎯**
 

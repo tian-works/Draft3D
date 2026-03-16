@@ -7,7 +7,7 @@ name = "draft3d-gui"
 version = "0.1.0"
 description = "Draft3D GUI and core tools for 3D content generation based on ComfyUI"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
 authors = [
   { name = "Draft3D authors" }
@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/Draft3D-GUI"
+Homepage = "https://github.com/tian-works/Draft3D"
 
 [tool.setuptools.packages.find]
 where = ["src"]
