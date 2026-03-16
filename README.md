@@ -2,7 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![SoftwareX](https://img.shields.io/badge/SoftwareX-ready-green.svg)](https://www.sciencedirect.com/journal/softwarex)
+[![Status](https://img.shields.io/badge/status-research--software-blue.svg)](#)
+[![Manuscript](https://img.shields.io/badge/manuscript-in_preparation-orange.svg)](#)
 
 An easy-to-use Qt-based graphical user interface and supporting tools for 3D content generation workflows built on top of ComfyUI.
 
@@ -39,7 +40,7 @@ An easy-to-use Qt-based graphical user interface and supporting tools for 3D con
 
 7. **💾 Automatic Result Management**: All generated images and 3D models are automatically saved with timestamps and organized by date for easy tracking.
 
-8. **🔬 Research-Ready**: Repository layout follows SoftwareX guidelines, ensuring reproducibility and long-term maintainability for academic research.
+8. **🔬 Research-Ready**: Repository layout is being organized to support reproducibility, documentation, and long-term maintainability for academic research and future research-software publication.
 
 ---
 
@@ -246,7 +247,7 @@ We **strongly recommend** using a Python virtual environment (`venv`) to isolate
 - **🛡️ Prevents conflicts**: Avoids version conflicts with other Python projects
 - **🔬 Ensures reproducibility**: Creates a consistent environment that matches the project requirements
 - **🧹 Simplifies cleanup**: You can easily remove the entire environment if needed
-- **✨ Follows best practices**: Aligns with Python packaging standards and SoftwareX guidelines
+- **✨ Follows best practices**: Aligns with modern Python packaging standards and common research-software publication practices
 
 Don't worry if you're new to virtual environments—the setup process will guide you through creating one automatically. 😊
 
@@ -807,7 +808,7 @@ The core packages (`draft3d` and `draft3d_gui`) are documented with docstrings. 
 
 ## Project Structure 📁
 
-The repository layout follows SoftwareX guidelines, with clear separation between **core logic** and **GUI components**:
+The repository layout is being organized to support reproducibility and clear separation between **core logic** and **GUI components**:
 
 ```
 Draft3D-GUI/
@@ -851,7 +852,7 @@ To meet the SoftwareX journal requirements for research software, this repositor
 
 - **Reproducibility and portability**:
   - Encourages the use of virtual environments (`venv`) to avoid interference from system Python installations.
-  - Plans to populate `examples/` and `data/` with complete samples and datasets that correspond to the experiments in the SoftwareX article.
+  - Plans to populate `examples/` and `data/` with complete samples and datasets that correspond to the experiments described in the accompanying manuscript.
 
 - **Licensing and documentation**:
   - Provides a top-level `README.md` and `LICENSE.txt`.
@@ -902,32 +903,29 @@ For the full license text, see [LICENSE.txt](LICENSE.txt).
 
 ## How to Cite
 
-If you use Draft3D GUI in your academic work, please cite our SoftwareX article:
+If you use Draft3D GUI in academic work, please cite the software repository (or a versioned software release, if available).
 
-### Journal Paper Citation
+### Software citation (recommended for now)
 
 **BibTeX:**
 ```bibtex
-@article{Draft3D_SoftwareX_2026,
-  author  = {Song, Jiatian and Zhang, Jianmin},
-  title   = {{Draft3D}: An open-source local software platform for sketch-conditioned multi-stage 2D-to-3D concept generation},
-  journal = {SoftwareX},
-  year    = {2026},
-  volume  = {[Volume]},
-  pages   = {[Pages]},
-  doi     = {[DOI]},
+@software{draft3d_gui_2026,
+  author = {Song, Jiatian and Zhang, Jianmin},
+  title  = {{Draft3D GUI}: A Qt-based graphical user interface for sketch-conditioned multi-stage 2D-to-3D concept generation},
+  year   = {2026},
+  url    = {https://github.com/[your-username]/Draft3D-GUI},
+  note   = {Research software repository}
 }
-```
-
-**APA Style:**
-```
-Song, J., & Zhang, J.* (2026). Draft3D: An open-source local software platform for sketch-conditioned multi-stage 2D-to-3D concept generation. SoftwareX, [Volume], [Pages]. https://doi.org/[DOI]
 ```
 
 **Affiliation:**
 
 - Jiatian Song; Jianmin Zhang*  
   Guizhou University, Guiyang, China
+
+### Manuscript status
+
+A journal manuscript describing Draft3D is currently in preparation. Full article citation details (journal/volume/pages/DOI) will be added after peer review and publication.
 
 ### Software Citation (Zenodo)
 
