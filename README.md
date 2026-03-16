@@ -83,7 +83,7 @@ Simply double-click `RunAll.bat` in the project root. The script handles everyth
 
 The following figure shows the typical Draft3D end-to-end workflow inside the GUI:
 
-![Draft3D GUI workflow overview](diagram.png)
+![Draft3D GUI workflow overview](docs/assets/images/diagram.png)
 
 1. **Sketch input**: Draw or load a sketch in the left sketch canvas.
 2. **Image gallery selection**: Browse generated candidates and select one image from the gallery.
