@@ -923,12 +923,6 @@ If you use Draft3D GUI in academic work, please cite the software repository (or
 - Jiatian Song; Jianmin Zhang*  
   Guizhou University, Guiyang, China
 
-### Optional: manuscript and archival citation (add later)
-
-When the paper is publicly available (or accepted), you may add the formal article citation here.
-
-If you create a Zenodo archive for a specific software release, add the Zenodo DOI-based citation here as well.
-
 ---
 
 ## Acknowledgments
