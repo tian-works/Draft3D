@@ -79,8 +79,13 @@ Draft3D relies on specific ComfyUI workflows for **sketch-conditioned image gene
 
 ### Quick Installation
 
-1. **Clone or download** this repository
-2. **Place ComfyUI** in the `ComfyUI/` folder at project root
+1. **Clone or download** this repository  
+   - If you cloned via git and this repo includes ComfyUI as a submodule, run:
+     ```bat
+     git submodule update --init --recursive
+     ```
+     (Alternatively, clone with `--recurse-submodules`.)
+2. **Ensure ComfyUI is available** in the `ComfyUI/` folder at project root
 3. **Run the setup script**:
    ```bat
    RunAll.bat
