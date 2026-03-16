@@ -53,6 +53,30 @@ An easy-to-use Qt-based graphical user interface and supporting tools for 3D con
 - **ComfyUI**: Standard installation required in `ComfyUI/` folder
 - **Hardware**: NVIDIA GPU recommended (CPU-only operation possible but slower)
 
+### ComfyUI models & custom nodes (Hunyuan3D + Z-Image-Turbo)
+
+Draft3D relies on specific ComfyUI workflows for **sketch-conditioned image generation (Z-Image-Turbo)** and **image-to-3D generation (Hunyuan3D)**. Before running Draft3D, make sure your ComfyUI installation has:
+
+1. **Required model files (place under `ComfyUI/models/` according to ComfyUI conventions)**
+   - **Hunyuan3D (3D generation)**:
+     - `hunyuan_3d_v2.1.safetensors`
+   - **Z-Image-Turbo (image generation / sketch-to-image)**:
+     - `z_image_turbo_bf16.safetensors`
+     - `ae.safetensors`
+     - `qwen_3_4b.safetensors`
+     - `Z-Image-Turbo-Fun-Controlnet-Union.safetensors`
+     - `lumina2.safetensors`
+
+2. **Required custom nodes**
+   - Install the ComfyUI node packs that provide the workflow node types used by Draft3D (for example Hunyuan3D v2 nodes and Z-Image-Turbo / AuraFlow-related nodes such as `ModelSamplingAuraFlow`, `UNETLoader`, `ModelPatchLoader`, `EmptyLatentHunyuan3Dv2`, `VAEDecodeHunyuan3D`, `SaveGLB`, etc.).
+   - The easiest way is typically to install **ComfyUI-Manager**, start ComfyUI once, and then install missing custom nodes when ComfyUI reports “missing node” / “unknown `class_type`”.
+
+**Quick verification**
+
+- Start ComfyUI and confirm it launches without errors.
+- In Draft3D GUI, run a small **image generation** (few steps, low resolution) and ensure images are produced.
+- Then run **Generate 3D** once and confirm a `.glb` is saved under `generated_images/` (file prefix `ComfyUI_Hunyuan3D`).
+
 ### Quick Installation
 
 1. **Clone or download** this repository
