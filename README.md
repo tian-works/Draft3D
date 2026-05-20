@@ -15,41 +15,41 @@ The Python-based implementation provides a cross-platform implementation basis. 
 
 ## Quick Start
 
-下面的步骤分为两类：
+The following steps are organized into two usage paths:
 
-- **普通用户（推荐）**：直接使用“一键运行”脚本（Windows: `RunAll.bat`；Ubuntu/macOS: `RunAll.sh`）
-- **开发者/研究复现**：使用 git 克隆（含 submodule），再运行对应平台的一键脚本
+- **General users (recommended)**: directly use the one-click launch scripts (Windows: `RunAll.bat`; Ubuntu/macOS: `RunAll.sh`)
+- **Developers / research reproducibility**: clone via git (with submodules), then run the one-click script for your platform
 
-### 方式 A：普通用户一键运行（推荐）
+### Method A: One-click launch for general users (recommended)
 
-1. **获取代码**
-   - 方式 1：在 GitHub 页面点击 “Code → Download ZIP”，解压到**纯英文路径**（尽量避免中文/空格/过深目录）
-   - 方式 2：按下方“方式 B”使用 git 克隆
+1. **Get the code**
+   - Method 1: on the GitHub page, click `Code -> Download ZIP`, then extract to an **English-only path** (avoid non-ASCII characters, spaces, and overly deep directories)
+   - Method 2: use git clone as shown in "Method B" below
 
-2. **一键启动（Windows）**
-   - 直接双击运行：
+2. **One-click start (Windows)**
+   - Double-click to run:
 
 ```bat
 RunAll.bat
 ```
 
-首次运行预期行为：
+Expected behavior on first run:
 
-- 自动创建虚拟环境 `venv/`
-- 自动安装 Draft3D 依赖与 ComfyUI 依赖（首次可能需要几分钟，取决于网络与硬盘速度）
-- 自动启动 ComfyUI（默认 `http://127.0.0.1:8188`）并启动 Draft3D GUI
+- Automatically create the virtual environment `venv/`
+- Automatically install Draft3D and ComfyUI dependencies (the first run may take several minutes depending on network and disk speed)
+- Automatically launch ComfyUI (default `http://127.0.0.1:8188`) and then start the Draft3D GUI
 
-若你看到 GUI 正常打开，同时浏览器能访问 `http://127.0.0.1:8188`，说明“一键运行”已经成功。
+If the GUI opens normally and your browser can access `http://127.0.0.1:8188`, the one-click launch has succeeded.
 
-**模型与节点依赖：** Draft3D 将图像生成与 3D 重建交给本机 ComfyUI 执行，因此需要把对应 **权重文件** 放到 `ComfyUI/models/`（并按工作流安装 **自定义节点**）。一键脚本只会安装 Python 依赖并启动服务，**不会自动下载大型模型**。首次完整跑通 Sketch→Image→3D 前，请按 [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md) 准备模型与节点；若生成失败或报错缺模型，也在该文档与 [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) 中排查。
+**Model and node dependencies:** Draft3D delegates image generation and 3D reconstruction to your local ComfyUI instance, so the required **model weight files** must be placed in `ComfyUI/models/` (and required **custom nodes** must be installed for the workflows). The one-click scripts only install Python dependencies and start services; they **do not automatically download large models**. Before your first full Sketch -> Image -> 3D run, prepare models and nodes according to [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md). If generation fails or reports missing models, troubleshoot using that document and [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
-在 Ubuntu/macOS（bash）：
+On Ubuntu/macOS (bash):
 
 ```bash
 bash RunAll.sh
 ```
 
-### 方式 B：开发者克隆（含 submodules）
+### Method B: Developer clone (with submodules)
 
 1. **Clone with submodules**:
 
@@ -84,7 +84,7 @@ python -m pip install -r requirements.txt
   - Z-Image-Turbo: `z_image_turbo_bf16.safetensors`, `ae.safetensors`, `qwen_3_4b.safetensors`, `Z-Image-Turbo-Fun-Controlnet-Union.safetensors`, `lumina2.safetensors`
 - **Custom nodes**: install the node packs needed by the workflows. Using **ComfyUI-Manager** is the easiest way; if ComfyUI reports “missing node / unknown class_type”, install the missing custom nodes.
 
-5. **Run（推荐一键启动）**:
+5. **Run (one-click launch recommended)**:
 
 Windows:
 
@@ -98,13 +98,13 @@ Ubuntu/macOS:
 bash RunAll.sh
 ```
 
-## 可测试性与主要功能复现（Test / Reproducibility）
+## Testability and Main-Feature Reproducibility
 
-本仓库提供了可直接复现主要功能的**本地可执行测试入口**（无需额外编写代码）。下面给出最小可复现的运行步骤、示例输入，以及可以“对照检查”的预期输出与产物位置，方便审稿人/读者验证软件是否正常工作。
+This repository provides **locally executable test entry points** that can reproduce the main functionality directly (no extra coding required). The section below provides minimal reproducible steps, sample inputs, and expected outputs/artifact locations for straightforward verification by reviewers and readers.
 
-### 测试入口（Windows / Ubuntu / macOS）
+### Test Entry Points (Windows / Ubuntu / macOS)
 
-- **推荐：一键启动（Backend + GUI）**：
+- **Recommended: one-click launch (Backend + GUI)**:
 
 Windows:
 
@@ -118,64 +118,64 @@ Ubuntu/macOS:
 bash RunAll.sh
 ```
 
-预期现象（正常情况）：
+Expected behavior (normal case):
 
-- ComfyUI 后端启动后，会尝试打开浏览器页面 `http://127.0.0.1:8188`
-- Draft3D GUI 会自动启动，并与本机 ComfyUI 后端进行通信（默认端口 8188）
+- After the ComfyUI backend starts, it attempts to open `http://127.0.0.1:8188` in a browser
+- The Draft3D GUI starts automatically and connects to the local ComfyUI backend (default port: 8188)
 
-- **手动启动（便于排查）**：
-  - Windows：
-    - 终端 1：启动 ComfyUI（在 `ComfyUI/` 下运行 `python main.py`，或运行 `LaunchComfyUI.bat`）
-    - 终端 2：启动 GUI（运行 `LaunchGUI.bat` 或 `python GUI.py`）
-  - Ubuntu/macOS：
-    - 终端 1：启动 ComfyUI（在项目根目录运行 `bash LaunchComfyUI.sh`，或在 `ComfyUI/` 下运行 `python main.py`）
-    - 终端 2：启动 GUI（在项目根目录运行 `bash LaunchGUI.sh`，或运行 `python GUI.py`）
+- **Manual launch (for troubleshooting)**:
+  - Windows:
+    - Terminal 1: launch ComfyUI (run `python main.py` under `ComfyUI/`, or run `LaunchComfyUI.bat`)
+    - Terminal 2: launch GUI (run `LaunchGUI.bat` or `python GUI.py`)
+  - Ubuntu/macOS:
+    - Terminal 1: launch ComfyUI (run `bash LaunchComfyUI.sh` in the project root, or run `python main.py` under `ComfyUI/`)
+    - Terminal 2: launch GUI (run `bash LaunchGUI.sh` in the project root, or run `python GUI.py`)
 
-更详细的安装/启动说明见：[`docs/INSTALL.md`](docs/INSTALL.md)。
+For more detailed installation/startup instructions, see [`docs/INSTALL.md`](docs/INSTALL.md).
 
-### 最小可复现测试用例（覆盖主要功能）
+### Minimal Reproducible Test Case (covers core functionality)
 
-该用例覆盖 Draft3D 的主流程：**Sketch → Image → 3D**。
+This test case covers Draft3D's primary workflow: **Sketch -> Image -> 3D**.
 
-1. **启动软件**
-   - Windows：运行 `RunAll.bat`
-   - Ubuntu/macOS：运行 `bash RunAll.sh`
-   - 确认 ComfyUI 可访问：在浏览器打开 `http://127.0.0.1:8188`
+1. **Launch the software**
+   - Windows: run `RunAll.bat`
+   - Ubuntu/macOS: run `bash RunAll.sh`
+   - Confirm ComfyUI is reachable by opening `http://127.0.0.1:8188` in your browser
 
-2. **Sketch 输入（示例输入）**
-   - 在 GUI 的画布上随意画一个简单轮廓（例如：耳机的外轮廓 + 头梁）
-   - 软件会自动检测画布是否有内容：若画布非空，将自动把手绘图作为条件输入参与图像生成（无需额外勾选开关）
-   - 也可以将手绘图保存为本地 PNG（GUI 提供 “Save Sketch” 功能），用于留存输入样例
+2. **Sketch input (example input)**
+   - Draw a simple contour on the GUI canvas (for example: headphone outer contour + headband)
+   - The software automatically detects whether the canvas is non-empty; when non-empty, the sketch is automatically used as conditioning input for image generation (no extra switch required)
+   - You can also save the sketch as a local PNG (the GUI provides a `Save Sketch` feature) to archive input samples
 
-3. **生成图像（Image Generation）**
-   - 在提示词输入框输入一个简单提示词，例如：
+3. **Generate image (Image Generation)**
+   - Enter a simple prompt in the prompt input box, for example:
      - `a studio product photo of a headphone, high detail, white background`
-   - 推荐先用小参数做快速验证（降低显存占用）：
-     - width/height：512×512
-     - steps：4（或更低）
-     - batch：1
-   - 点击生成，等待图像结果出现在图库（gallery）中
+   - Recommended quick validation settings (to reduce VRAM usage):
+     - width/height: 512x512
+     - steps: 4 (or lower)
+     - batch: 1
+   - Click generate and wait for results to appear in the image gallery
 
-4. **生成 3D（Image-to-3D）**
-   - 在图库中选择一张生成结果
-   - 点击 **Generate 3D**，等待 3D 网格生成并在 3D 预览区可视化
+4. **Generate 3D (Image-to-3D)**
+   - Select one generated image in the gallery
+   - Click **Generate 3D**, then wait for the 3D mesh to be generated and visualized in the 3D preview panel
 
-### 预期输出（Expected Outputs）
+### Expected Outputs
 
-- **输出目录**：生成的图片与 3D 网格会保存到仓库根目录下的 `generated_images/`（按日期组织）。
-- **3D 结果校验**：完成一次 3D 生成后，应能在 `generated_images/` 下找到一个 `.glb` 文件，文件名通常带有前缀 `ComfyUI_Hunyuan3D`（详见 [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md) 的 Quick verification）。
+- **Output directory**: generated images and 3D meshes are saved under `generated_images/` in the repository root (organized by date).
+- **3D result validation**: after one successful 3D generation, you should find a `.glb` file under `generated_images/`, typically with prefix `ComfyUI_Hunyuan3D` (see Quick verification in [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md)).
 
-如果上述产物未生成，通常意味着模型文件、ComfyUI 自定义节点或显存配置存在问题。
+If these artifacts are not produced, the most common causes are missing model files, missing ComfyUI custom nodes, or VRAM configuration issues.
 
-### 常见问题（FAQ）与故障排查
+### FAQ and Troubleshooting
 
-- **一键运行无反应/闪退**：优先在命令行里运行对应平台脚本查看报错（Windows：`RunAll.bat`；Ubuntu/macOS：`bash RunAll.sh`）。也可以分别运行后端与 GUI 启动脚本定位问题（Windows：`LaunchComfyUI.bat` / `LaunchGUI.bat`；Ubuntu/macOS：`bash LaunchComfyUI.sh` / `bash LaunchGUI.sh`）。
-- **连接不上后端 / ComfyUI connection errors**：确认 ComfyUI 正在运行并可访问 `http://127.0.0.1:8188`
-- **缺少节点 / unknown `class_type`**：使用 ComfyUI-Manager 安装缺失的 custom nodes，并重启 ComfyUI
-- **模型找不到 / 文件名不匹配**：核对模型文件名与放置位置（见 [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md)）
-- **显存不足 / OOM**：先降低分辨率、steps、batch，并关闭其它占用 GPU 的程序
+- **One-click launch has no response / closes immediately**: run platform scripts from a terminal first to inspect errors (Windows: `RunAll.bat`; Ubuntu/macOS: `bash RunAll.sh`). You can also run backend and GUI launch scripts separately to isolate issues (Windows: `LaunchComfyUI.bat` / `LaunchGUI.bat`; Ubuntu/macOS: `bash LaunchComfyUI.sh` / `bash LaunchGUI.sh`).
+- **Cannot connect to backend / ComfyUI connection errors**: confirm ComfyUI is running and reachable at `http://127.0.0.1:8188`
+- **Missing nodes / unknown `class_type`**: install missing custom nodes via ComfyUI-Manager, then restart ComfyUI
+- **Model not found / filename mismatch**: verify model filenames and locations (see [`docs/COMFYUI_SETUP.md`](docs/COMFYUI_SETUP.md))
+- **Out of memory / OOM**: lower resolution, steps, and batch first, and close other GPU-intensive programs
 
-更完整的排障列表见：[`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)。
+For a more complete troubleshooting checklist, see [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 ## Project Structure
 
