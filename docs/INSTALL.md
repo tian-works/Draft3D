@@ -4,9 +4,15 @@ This page contains more detailed setup steps than the project homepage (`README.
 
 ## Prerequisites
 
-- Windows 10+ (Linux/macOS can work with script adaptations)
+- Windows 10/11, Ubuntu, or macOS
 - Python **3.10+**
 - NVIDIA GPU recommended (CPU-only is possible but slower)
+
+## Cross-platform notes
+
+Draft3D is implemented mainly in Python, and its core workflow does not rely on Windows-specific interfaces. Therefore, the software has a cross-platform implementation basis. In the original submission, we mainly reported validation on Windows 10 and Windows 11 because these were the complete testing environments available at that time. In response to the reviewer comment, we further tested Draft3D on Ubuntu and macOS. The additional tests confirmed that, after installing the required dependencies, Draft3D can be launched and its main workflow can be executed on Windows, Ubuntu, and macOS.
+
+Nevertheless, platform-specific differences in GPU drivers, CUDA or Metal support, deep learning library versions, GUI environments, local path conventions, and external model components may still affect the deployment experience. Please check environment-specific notes when troubleshooting.
 
 ## Get the code
 
@@ -29,7 +35,13 @@ git submodule update --init --recursive
 RunAll.bat
 ```
 
-The script will create a virtual environment, install dependencies, start ComfyUI, and launch the GUI.
+The script will create a virtual environment (if missing), install dependencies on first run, start ComfyUI, and launch the GUI.
+
+On Ubuntu/macOS (bash):
+
+```bash
+bash RunAll.sh
+```
 
 ## Manual launch (two terminals)
 

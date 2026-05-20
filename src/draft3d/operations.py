@@ -24,6 +24,7 @@ from .comfy_client import (
 from .config import COMFY_API_URL
 from .io_utils import get_output_folder
 from .workflows import (
+    DEFAULT_NEGATIVE_PROMPT,
     build_workflow,
     build_workflow_hunyuan3d,
     build_workflow_with_controlnet,
@@ -44,6 +45,7 @@ def generate_image(
     control_strength: float = 0.85,
     canny_low: float = 0.1,
     canny_high: float = 0.32,
+    negative_prompt: Optional[str] = DEFAULT_NEGATIVE_PROMPT,
     on_image_saved: Optional[Callable[[str, int, int], None]] = None,
 ) -> Optional[List[str]]:
     """
@@ -80,6 +82,7 @@ def generate_image(
             control_strength=control_strength,
             canny_low=canny_low,
             canny_high=canny_high,
+            negative_prompt=negative_prompt,
         )
         # Debug: print LoadImage node configuration from the workflow
         if "58" in workflow:
@@ -103,6 +106,7 @@ def generate_image(
             use_sketch=False,
             sketch_filename=None,
             sketch_subfolder=None,
+            negative_prompt=negative_prompt,
         )
 
     prompt_id = queue_prompt(workflow)
@@ -191,6 +195,7 @@ def edit_image(
     canny_low: float = 0.1,
     canny_high: float = 0.32,
     batch_size: int = 1,
+    negative_prompt: Optional[str] = DEFAULT_NEGATIVE_PROMPT,
 ) -> Optional[List[str]]:
     """
     Main function for editing an existing image using the Z-Image-Turbo
@@ -226,6 +231,7 @@ def edit_image(
         canny_low=canny_low,
         canny_high=canny_high,
         batch_size=batch_size,
+        negative_prompt=negative_prompt,
     )
 
     # Debug: print Prompt node configuration

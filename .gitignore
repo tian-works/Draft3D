@@ -1,9 +1,15 @@
-# Python
+# =============================================================================
+# Draft3D — ignore local / dev / runtime artifacts (do not publish to GitHub)
+# =============================================================================
+
+# --- Python ---
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
+*.pyo
+*.pyd
 .Python
+*.so
 build/
 develop-eggs/
 dist/
@@ -19,31 +25,66 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.ipynb_checkpoints
 
-# Virtual Environment
+# --- Virtual environments ---
 venv/
+.venv/
 ENV/
 env/
-.venv/
 
-# IDE
+# --- IDE / editors ---
 .vscode/
 .idea/
+*.iml
 *.swp
 *.swo
 *~
-.DS_Store
 
-# Project specific
-generated_images/
-*.log
-temp_sketch.png
-gui_config.json
-
-# Local assistant / IDE metadata
+# --- AI assistant / local tooling (not part of the product) ---
 .claude/
+.cursor/
 
-# ComfyUI (if included as submodule, these should be ignored)
+# --- OS ---
+.DS_Store
+.AppleDouble
+Thumbs.db
+Desktop.ini
+
+# --- Logs & secrets ---
+*.log
+.env
+.env.local
+.env.*.local
+
+# --- Draft3D user/runtime data (never commit) ---
+gui_config.json
+generated_images/
+output/
+input/
+
+# Temporary sketch images (runtime or local tests)
+temp_sketch*.png
+draft3d_temp_sketch_*.png
+
+# Local scratch notes (not for publication)
+说明.txt
+
+# Legacy root preset file — canonical template is configs/prompt_presets.json
+/prompt_presets.json
+
+# Internal open-source checklist (author-only; not part of the product)
+OPEN_SOURCE_CHECKLIST.md
+
+# Unused / scratch doc assets (README uses docs/assets/images/diagram.png)
+docs/assets/images/temp_sketch.png
+docs/assets/images/draft-demo.png
+
+# --- ComfyUI submodule runtime (models downloaded separately by users) ---
 ComfyUI/output/
 ComfyUI/input/
 ComfyUI/models/
@@ -51,20 +92,3 @@ ComfyUI/temp/
 ComfyUI/user/
 ComfyUI/venv/
 ComfyUI/__pycache__/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
-.env
-.env.local
-
-# OS
-Thumbs.db
-.DS_Store

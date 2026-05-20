@@ -11,6 +11,38 @@ from __future__ import annotations
 import time as _time
 from typing import Any, Dict, Optional
 
+DEFAULT_NEGATIVE_PROMPT = (
+    "different shape, changed proportions, missing details, extra parts, background, "
+    "floor, surface, shadow, reflection, glow, gradient, extra plane, too many colors, "
+    "colorful, highly saturated"
+)
+
+
+def _apply_negative_conditioning(
+    workflow: Dict[str, Any],
+    negative_prompt: Optional[str],
+    neg_node_id: str,
+    positive_node_id: str,
+    clip_node_id: str,
+) -> None:
+    """Set negative conditioning to CLIP encode or zero-out when empty."""
+    neg_text = (negative_prompt or "").strip()
+    if neg_text:
+        workflow[neg_node_id] = {
+            "inputs": {
+                "text": neg_text,
+                "clip": [clip_node_id, 0],
+            },
+            "class_type": "CLIPTextEncode",
+        }
+    else:
+        workflow[neg_node_id] = {
+            "inputs": {
+                "conditioning": [positive_node_id, 0],
+            },
+            "class_type": "ConditioningZeroOut",
+        }
+
 
 def build_workflow_with_controlnet(
     prompt: str,
@@ -23,6 +55,7 @@ def build_workflow_with_controlnet(
     control_strength: float = 0.85,
     canny_low: float = 0.1,
     canny_high: float = 0.32,
+    negative_prompt: Optional[str] = DEFAULT_NEGATIVE_PROMPT,
 ) -> Dict[str, Any]:
     """
     Build a workflow that uses ControlNet and Canny edge detection
@@ -119,12 +152,6 @@ def build_workflow_with_controlnet(
             },
             "class_type": "KSampler",
         },
-        "70:42": {
-            "inputs": {
-                "conditioning": ["70:45", 0],
-            },
-            "class_type": "ConditioningZeroOut",
-        },
         "70:60": {
             "inputs": {
                 "strength": control_strength,
@@ -158,6 +185,8 @@ def build_workflow_with_controlnet(
         },
     }
 
+    _apply_negative_conditioning(workflow, negative_prompt, "70:42", "70:45", "70:39")
+
     # If a subfolder is provided, attach it to the LoadImage node
     if sketch_subfolder:
         workflow["58"]["inputs"]["subfolder"] = sketch_subfolder
@@ -176,6 +205,7 @@ def build_workflow(
     use_sketch: bool = False,
     sketch_filename: Optional[str] = None,
     sketch_subfolder: Optional[str] = None,
+    negative_prompt: Optional[str] = DEFAULT_NEGATIVE_PROMPT,
 ) -> Dict[str, Any]:
     """
     Build the base ComfyUI workflow.
@@ -211,10 +241,6 @@ def build_workflow(
         "57:29": {
             "inputs": {"vae_name": "ae.safetensors"},
             "class_type": "VAELoader",
-        },
-        "57:33": {
-            "inputs": {"conditioning": ["57:27", 0]},
-            "class_type": "ConditioningZeroOut",
         },
         "57:8": {
             "inputs": {"samples": ["57:3", 0], "vae": ["57:29", 0]},
@@ -280,6 +306,8 @@ def build_workflow(
             "class_type": "VAEEncode",
         }
 
+    _apply_negative_conditioning(workflow, negative_prompt, "57:33", "57:27", "57:30")
+
     return workflow
 
 
@@ -294,6 +322,7 @@ def build_workflow_z_image_turbo_edit(
     canny_low: float = 0.1,
     canny_high: float = 0.32,
     batch_size: int = 1,
+    negative_prompt: Optional[str] = DEFAULT_NEGATIVE_PROMPT,
 ) -> Dict[str, Any]:
     """
     Build a Z-Image-Turbo ControlNet workflow for image editing.
@@ -395,12 +424,6 @@ def build_workflow_z_image_turbo_edit(
             },
             "class_type": "KSampler",
         },
-        "70:42": {
-            "inputs": {
-                "conditioning": ["70:45", 0],
-            },
-            "class_type": "ConditioningZeroOut",
-        },
         "70:60": {
             "inputs": {
                 "strength": control_strength,
@@ -433,6 +456,8 @@ def build_workflow_z_image_turbo_edit(
             "class_type": "GetImageSize",
         },
     }
+
+    _apply_negative_conditioning(workflow, negative_prompt, "70:42", "70:45", "70:39")
 
     if image_subfolder:
         workflow["58"]["inputs"]["subfolder"] = image_subfolder
